@@ -1,3 +1,3 @@
 import Route from '@ember/routing/route';
 
-export default class TabelRoute extends Route {}
+export default class tableRoute extends Route {}
