@@ -1,1 +1,11 @@
 /* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+    td{
+      min-width: 5vw;
+    }
+    input{
+      max-width: 10vw;
+    }
+    .invalid{
+      border-color: red;
+      border-width: 5px;
+    }
