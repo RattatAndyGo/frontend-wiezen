@@ -1,4 +1,19 @@
-{{#if this.isSubmitted}}
+<tr>
+    <td>{{@gameType}}</td>
+    <td>
+        {{#each @gamePlayers as |player idx|}}
+            {{#if player}}{{idx}}{{/if}}
+        {{/each}}
+    </td>
+    {{#each @gamePlayers as |player idx|}}
+        <td>{{get @pointsEarned idx}}</td><td>{{get @pointsTotal idx}}</td>
+    {{/each}}
+</tr>
+
+
+
+
+{{!-- {{#if this.isSubmitted}}
     <tr>
         <td>{{this.gameType}}</td>
         <td>
@@ -23,4 +38,4 @@
         {{/each}}
         <td><button type="button" {{on "click" this.submitGame}}>Submit game</button></td>
     </tr>
-{{/if}}
+{{/if}} --}}

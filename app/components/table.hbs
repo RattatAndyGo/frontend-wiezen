@@ -7,7 +7,15 @@
     <th colspan="2">{{get @players 2}}</th>
     <th colspan="2">{{get @players 3}}</th>
   </tr>
-  <TableRow/>
+  {{#each this.games as |game|}}
+    <TableRow
+      @gameType={{game.gameType}}
+      @gamePlayers={{game.gamePlayers}}
+      @pointsEarned={{game.pointsEarned}}
+      @pointsTotal={{game.pointsTotal}}
+    />
+  {{/each}}
+  <NewRow @onCreate={{this.addNewRow}} />
 </table>
 <style>
     td{
