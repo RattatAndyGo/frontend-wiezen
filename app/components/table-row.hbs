@@ -1,5 +1,5 @@
 <tr>
-    <td>{{@gameType}}</td>
+    <td>{{@contract}}</td>
     <td>
         {{#each @gamePlayers as |player idx|}}
             {{#if player}}{{idx}}{{/if}}
@@ -9,33 +9,3 @@
         <td>{{get @pointsEarned idx}}</td><td>{{get @pointsTotal idx}}</td>
     {{/each}}
 </tr>
-
-
-
-
-{{!-- {{#if this.isSubmitted}}
-    <tr>
-        <td>{{this.gameType}}</td>
-        <td>
-            {{#each this.gamePlayers as |player idx|}}
-                {{#if plays}}{{idx}}{{/if}}
-            {{/each}}
-        </td>
-        {{#each this.gamePlayers as |player idx|}}
-            <td>{{get this.pointsEarned idx}}</td><td>{{get this.pointsTotal idx}}</td>
-        {{/each}}
-    </tr>
-{{else}}
-    <tr>
-        <td>{{input value=this.gameType}}</td>
-        <td>
-            {{#each this.gamePlayers as |player idx|}}
-                {{input checked=(get this.gamePlayers idx) type="checkbox"}}
-            {{/each}}
-        </td>
-        {{#each this.gamePlayers as |player idx|}}
-            <td>{{input value=(get this.pointsEarned idx) type="number"}}</td><td>{{get this.pointsTotal idx}}</td>
-        {{/each}}
-        <td><button type="button" {{on "click" this.submitGame}}>Submit game</button></td>
-    </tr>
-{{/if}} --}}

@@ -1,0 +1,14 @@
+{{page-title "Players"}}
+{{outlet}}
+
+<h1>Players</h1>
+
+<ul>
+  {{#each @model as |player|}}
+    <li>
+      {{player.name}}
+    </li>
+  {{else}}
+    <li>No players yet</li>
+  {{/each}}
+</ul>

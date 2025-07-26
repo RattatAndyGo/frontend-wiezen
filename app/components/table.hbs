@@ -10,7 +10,7 @@
       </tr>
       {{#each this.games as |game|}}
         <TableRow
-          @gameType={{game.gameType}}
+          @contract={{game.contract}}
           @gamePlayers={{game.gamePlayers}}
           @pointsEarned={{game.pointsEarned}}
           @pointsTotal={{game.pointsTotal}}
@@ -23,11 +23,11 @@
         <tr>
         <th>SPEL</th>
         <th>SPELERS</th>
-        <th colspan="2">{{input value=(get this.players 0)}}</th>
-        <th colspan="2">{{input value=(get this.players 1)}}</th>
-        <th colspan="2">{{input value=(get this.players 2)}}</th>
-        <th colspan="2">{{input value=(get this.players 3)}}</th>
-        <th><button {{on "click" this.submitPlayers}}>Submit players</button></th>
+        <th colspan="2"><Input @value={{(get this.players 0)}} /></th>
+        <th colspan="2"><Input @value={{(get this.players 1)}} /></th>
+        <th colspan="2"><Input @value={{(get this.players 2)}} /></th>
+        <th colspan="2"><Input @value={{(get this.players 3)}} /></th>
+        <th><button type="button" {{on "click" this.submitPlayers}}>Submit players</button></th>
         </tr>
 
     {{/if}}

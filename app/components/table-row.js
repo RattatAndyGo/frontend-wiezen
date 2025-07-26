@@ -5,7 +5,7 @@ import { action } from '@ember/object';
 export default class TableRowComponent extends Component {
   @tracked isSubmitted = false;
 
-  gameTypes = [
+  contracts = [
     'Vraag mee',
     'Alleen',
     'Abondance 9',
@@ -19,7 +19,7 @@ export default class TableRowComponent extends Component {
     'Solo Slim',
   ];
 
-  gameType = '';
+  contract = '';
   gamePlayers = [false, false, false, false];
   pointsEarned = [0, 0, 0, 0];
   pointsTotal = [0, 0, 0, 0];
