@@ -1,11 +1,12 @@
 <tr>
     <td>{{input value=this.contract}}</td>
     <td>
-        {{#each this.gamePlayers as |player idx|}}
-            {{input checked=(get this.gamePlayers idx) type="checkbox"}}
+        {{#each this.activePlayers as |player idx|}}
+            {{input checked=(get this.activePlayers idx) type="checkbox"}}
         {{/each}}
     </td>
-    {{#each this.gamePlayers as |player idx|}}
+    <td>To be implemented</td>
+    {{#each this.activePlayers as |player idx|}}
         <td colspan="2">{{input value=(get this.pointsEarned idx) type="number"}}</td>
     {{/each}}
     <td><button type="button" {{on "click" this.submitGame}}>Submit game</button></td>

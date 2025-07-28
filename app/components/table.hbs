@@ -4,14 +4,15 @@
       <tr>
         <th>SPEL</th>
         <th>SPELERS</th>
-        {{#each this.players as |player|}}
+        <th>DELER</th>
+        {{#each this.playernames as |player|}}
             <th colspan="2">{{player}}</th>
         {{/each}}
       </tr>
       {{#each this.games as |game|}}
         <TableRow
           @contract={{game.contract}}
-          @gamePlayers={{game.gamePlayers}}
+          @activePlayers={{game.activePlayers}}
           @pointsEarned={{game.pointsEarned}}
           @pointsTotal={{game.pointsTotal}}
         />
@@ -19,14 +20,12 @@
       <NewRow @onCreate={{this.addNewRow}} />
 
     {{else}}
-    
         <tr>
-        <th>SPEL</th>
-        <th>SPELERS</th>
-        <th colspan="2"><Input @value={{(get this.players 0)}} /></th>
-        <th colspan="2"><Input @value={{(get this.players 1)}} /></th>
-        <th colspan="2"><Input @value={{(get this.players 2)}} /></th>
-        <th colspan="2"><Input @value={{(get this.players 3)}} /></th>
+        <th>Geef spelers in:</th>
+        <th colspan="2"><Input @value={{(get this.playernames 0)}} /></th>
+        <th colspan="2"><Input @value={{(get this.playernames 1)}} /></th>
+        <th colspan="2"><Input @value={{(get this.playernames 2)}} /></th>
+        <th colspan="2"><Input @value={{(get this.playernames 3)}} /></th>
         <th><button type="button" {{on "click" this.submitPlayers}}>Submit players</button></th>
         </tr>
 
