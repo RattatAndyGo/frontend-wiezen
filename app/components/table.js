@@ -60,12 +60,14 @@ export default class tableComponent extends Component {
   async addNewRow(contract, activePlayers, pointsEarned) {
     // BACKEND
     // Create hand
+    const dealer = this.players[this.index % 4];  // TODO dealer chosen positionally, should be given by frontend
+    const dealername = this.playernames[this.index % 4];
     const hand = this.store.createRecord('hand', {
       contract: contract,
       index: this.index,
       round: this.round,
-      dealer: this.players[0]
-    });   // TODO dealer hardcoded as first player, should be given by frontend
+      dealer: dealer
+    });
     await hand.save();
     this.index++;
     
@@ -104,6 +106,7 @@ export default class tableComponent extends Component {
     this.games = [
       ...this.games,
       {
+        dealer: dealername,
         contract: contract,
         activePlayers: activePlayers,
         pointsEarned: pointsEarned,

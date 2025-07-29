@@ -11,14 +11,17 @@
       </tr>
       {{#each this.games as |game|}}
         <TableRow
+          @dealer={{game.dealer}}
           @contract={{game.contract}}
           @activePlayers={{game.activePlayers}}
           @pointsEarned={{game.pointsEarned}}
           @pointsTotal={{game.pointsTotal}}
         />
       {{/each}}
-      <NewRow @onCreate={{this.addNewRow}} />
-
+      {{#unless @readOnly}}
+        <NewRow @onCreate={{this.addNewRow}} />
+      {{/unless}}
+      
     {{else}}
         <tr>
         <th>Geef spelers in:</th>

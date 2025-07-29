@@ -5,7 +5,7 @@
             {{#if player}}{{idx}}{{/if}}
         {{/each}}
     </td>
-    <td>To be implemented</td>
+    <td>{{@dealer}}</td>
     {{#each @activePlayers as |player idx|}}
         <td>{{get @pointsEarned idx}}</td><td>{{get @pointsTotal idx}}</td>
     {{/each}}
