@@ -105,12 +105,17 @@ export default class tableComponent extends Component {
       newTotal = pointsEarned;
     }
 
+    let activePlayernames = [];
+    for(let i = 0; i < this.playernames.length; i++){
+      if(activePlayers[i]) activePlayernames.push(this.playernames[i])
+    }
+
     this.games = [
       ...this.games,
       {
         dealer: dealername,
         contract: contract,
-        activePlayers: activePlayers,
+        activePlayers: activePlayernames,
         pointsEarned: pointsEarned,
         pointsTotal: newTotal,
       },
