@@ -6,17 +6,20 @@ import { inject as service } from '@ember/service';
 export default class tableComponent extends Component {
   @service store;
 
-  @tracked submittedPlayers = false;
-  @tracked games = [];
-  playernames = [null, null, null, null]; // The four player names
-  players = [];                           // The four player records
-  round = null;                           // The round record
-  index = 0;                              // The index of the next hand
+  @tracked submittedPlayers = this.args.playernames ? true : false;
+  @tracked games = this.args.games ? this.args.games : [];
+  playernames = this.args.playernames ?? [null, null, null, null]; // The four player names
+  players = []; // The four player records
+  positions = []; // The four position records linking players with the round
+  round = null; // The round record
+  index = 0; // The index of the next hand
 
   @action
   async submitPlayers() {
+    console.log(this.args.playernames);
+    console.log(this.submittedPlayers);
     if (this.playernames.includes(null) || this.playernames.includes('')) {
-      console.log("Not all names are entered");
+      console.log('Not all names are entered');
       return; // Stop if not all names are entered
     }
 
@@ -48,9 +51,10 @@ export default class tableComponent extends Component {
       let position = this.store.createRecord('position', {
         index: i,
         player: player,
-        round: this.round
+        round: this.round,
       });
       position.save();
+      this.positions.push(position);
     }
 
     this.submittedPlayers = true;
@@ -60,36 +64,36 @@ export default class tableComponent extends Component {
   async addNewRow(contract, activePlayers, pointsEarned) {
     // BACKEND
     // Create hand
-    const dealer = this.players[this.index % 4];  // TODO dealer chosen positionally, should be given by frontend
+    const dealer = this.players[this.index % 4]; // TODO dealer chosen positionally, should be given by frontend
     const dealername = this.playernames[this.index % 4];
     const hand = this.store.createRecord('hand', {
       contract: contract,
       index: this.index,
       round: this.round,
-      dealer: dealer
+      dealer: dealer,
     });
     await hand.save();
     this.index++;
-    
+
     // Active Players
     let handPlayers = await hand.activePlayers;
-    for(let i in this.players){
-      if(activePlayers[i]){
+    for (let i in this.players) {
+      if (activePlayers[i]) {
         handPlayers.push(this.players[i]);
         this.players[i].save();
       }
     }
 
     // Points
-    for(let i in this.players){
+    for (let i in this.players) {
       let point = this.store.createRecord('point', {
         score: pointsEarned[i],
-        player: this.players[i],
-        hand: hand
+        position: this.positions[i],
+        hand: hand,
       });
-      point.save()
+      point.save();
     }
-    
+
     hand.save();
 
     // FRONTEND
