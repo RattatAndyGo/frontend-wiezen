@@ -1,12 +1,17 @@
 <tr>
     <td>{{@contract}}</td>
     <td>
-        {{#each @activePlayers as |player idx|}}
-            {{#if player}}{{idx}}{{/if}}
+        {{#each @playernames as |player idx|}}
+            {{#if (get @activePlayers idx)}}
+                {{player}};
+            {{/if}} 
+            {{!-- {{#let (eq idx (sub @activePlayers.length 1)) as |isLast|}}
+            {{player}}{{if isLast}}, {{/if}}
+            {{/let}} --}}
         {{/each}}
     </td>
     <td>{{@dealer}}</td>
-    {{#each @activePlayers as |player idx|}}
+    {{#each @pointsEarned as |_ idx|}}
         <td>{{get @pointsEarned idx}}</td><td>{{get @pointsTotal idx}}</td>
     {{/each}}
 </tr>

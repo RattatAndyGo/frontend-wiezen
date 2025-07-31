@@ -16,8 +16,6 @@ export default class tableComponent extends Component {
 
   @action
   async submitPlayers() {
-    console.log(this.args.playernames);
-    console.log(this.submittedPlayers);
     if (this.playernames.includes(null) || this.playernames.includes('')) {
       console.log('Not all names are entered');
       return; // Stop if not all names are entered
