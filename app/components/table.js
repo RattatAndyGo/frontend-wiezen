@@ -106,8 +106,8 @@ export default class tableComponent extends Component {
     }
 
     let activePlayernames = [];
-    for(let i = 0; i < this.playernames.length; i++){
-      if(activePlayers[i]) activePlayernames.push(this.playernames[i])
+    for (let i = 0; i < this.playernames.length; i++) {
+      if (activePlayers[i]) activePlayernames.push(this.playernames[i]);
     }
 
     this.games = [

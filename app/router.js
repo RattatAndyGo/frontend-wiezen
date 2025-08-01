@@ -7,5 +7,5 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
-  this.route('search', {path: "/search/:playername"});
+  this.route('search', { path: '/search/:playername' });
 });
