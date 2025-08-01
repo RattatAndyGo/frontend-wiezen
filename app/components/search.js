@@ -5,10 +5,11 @@ import { service } from '@ember/service';
 
 export default class SearchComponent extends Component {
     @service router;
-    @tracked playername = "";
+    @tracked playername;
 
     @action
     searchPlayer(){
+        console.log(this.playername);
         this.router.transitionTo('search', this.playername);
     }
 }

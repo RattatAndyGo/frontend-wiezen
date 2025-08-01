@@ -1,4 +1,2 @@
-<form>
-    <Input value={{@playername}} placeholder="Zoek op spelernaam..." />
-    <button {{ on "click" this.searchPlayer }}></button>
-</form>
+{{input value=this.playername}}
+<button {{ on "click" this.searchPlayer }}>Zoek</button>
